@@ -62,35 +62,35 @@ LSFT_T(KC_ESC), LGUI_T(KC_A), LALT_T(KC_S), LCTL_T(KC_D), LSFT_T(KC_F), KC_G,   
 
   [LAYER_LOWER] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       KC_ESC,  XXXXXXX,    KC_7,    KC_8,    KC_9, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, KC_DEL,
+       KC_ESC,     KC_NO,    KC_7,    KC_8,    KC_9, KC_NO,     KC_NO, KC_NO, KC_NO, KC_NO,  KC_NO, KC_DEL,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______, XXXXXXX,    KC_4,    KC_5,    KC_6, XXXXXXX,    KC_LEFT, KC_DOWN,   KC_UP, KC_RIGHT, XXXXXXX, XXXXXXX,
+       KC_TRNS,    KC_NO,    KC_4,    KC_5,    KC_6, KC_NO,     KC_LEFT, KC_DOWN,   KC_UP, KC_RIGHT, KC_NO, KC_NO,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______,    KC_0,    KC_1,    KC_2,    KC_3, KC_PSCR,    QK_BOOT,  EE_CLR, _______, _______, XXXXXXX, XXXXXXX,
+       KC_TRNS,    KC_0,     KC_1,    KC_2,    KC_3, KC_PSCR,   QK_BOOT,  EE_CLR, KC_TRNS, KC_TRNS, KC_NO, KC_NO,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  _______, _______, _______,    XXXXXXX, _______
+                                  KC_TRNS, KC_TRNS, KC_TRNS,    KC_NO, KC_TRNS
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
   [LAYER_RAISE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       QK_BOOT, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,     KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, XXXXXXX,
+       QK_BOOT, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_NO,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
          KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,    KC_MINS,  KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS,  KC_GRV,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
          KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,    KC_UNDS,  KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  _______, _______, XXXXXXX,    _______, _______
+                                  KC_TRNS, KC_TRNS,   KC_NO,    KC_TRNS, KC_TRNS
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
   [LAYER_POINTER] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DPI_MOD, S_D_MOD,    S_D_MOD, DPI_MOD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+       KC_NO, KC_NO,   KC_NO,   KC_NO,   DPI_MOD, S_D_MOD,      S_D_MOD,  DPI_MOD, KC_NO,   KC_NO,   KC_NO,   KC_NO,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,    XXXXXXX, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI, XXXXXXX,
+       KC_NO, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO,        KC_NO,    KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI, KC_NO,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       XXXXXXX, _______, DRGSCRL, KC_COPY, KC_PSTE, QK_BOOT,    QK_BOOT,  EE_CLR, SNIPING, DRGSCRL, _______, XXXXXXX,
+       KC_NO, KC_TRNS, DRGSCRL, KC_COPY, KC_PSTE, QK_BOOT,      QK_BOOT,  EE_CLR,  SNIPING, DRGSCRL, KC_TRNS, KC_NO,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   KC_BTN2, KC_BTN1, KC_BTN3,    KC_BTN3, KC_BTN1
   //                            ╰───────────────────────────╯ ╰──────────────────╯
@@ -105,7 +105,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code(KC_END); // Intercept hold function to send Ctrl-X
                 return false;
             }
-            return true;             // Return true for normal processing of tap keycode
+            return true; // Return true for normal processing of tap keycode
     }
     return true;
 }
@@ -129,7 +129,7 @@ bool caps_word_press_user(uint16_t keycode) {
             return true;
 
         default:
-            return false;  // Deactivate Caps Word.
+            return false; // Deactivate Caps Word.
     }
 }
 
